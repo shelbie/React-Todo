@@ -2,19 +2,19 @@
 // feel free to change this component.js into TodoList.js
 
 import React from "react";
-import ToDo from "./Todo";
+import Task from "./Task";
 
-const ToDoList = props => {
+const TaskList = props => {
     return (
         <div className="todo-list">
-            {props.allToDo.map(todo => (
-                <ToDo key={todo.id} todo={todo} toggleToDo={props.toggleToDo} />
+            {props.tasks.map(task => (
+                <Task key={task.id} task={task} toggleTask={props.toggleTask} />
             ))}
-            <button className="clear-btn" onClick={props.clearToDo}>
-                Clear To-Do
+            <button className="clear-btn" onClick={props.clearTask}>
+                Clear Task
             </button>
         </div>
     )
 }
 
-export default ToDoList;
+export default TaskList;

@@ -1,10 +1,10 @@
 import React from 'react';
-import ReactDOM from "react-dom";
 
-import ToDoList from "./components/TodoList";
-import TodoForm from "./components/TodoForm";
+import TaskList from "./components/TodoList";
+import TaskForm from "./components/TaskForm";
+import "./components/Todo.css"
 
-const allToDo = [
+const tasks = [
   {
     name: "Wash Dishes",
     id: 1,
@@ -22,40 +22,40 @@ class App extends React.Component {
   constructor(){
     super();
       this.state = {
-        allToDo
+        tasks
       };
   }
 
-  toggleToDo = todoId => {
-    console.log(todoId);
+  toggleTask = taskId => {
+    console.log(taskId);
     this.setState({
-      allToDo: this.state.allToDo.map(todo => {
-        if(todoId === todo.id) {
+      tasks: this.state.tasks.map(task => {
+        if(taskId === task.id) {
           return {
-            ...todo,
-            completed: !todo.completed};
+            ...task,
+            completed: !task.completed};
           } else {
-            return todo;
+            return task;
           }
       })
     })
   }
-    addToDo = (event, todo) => {
-      event.preventDefault();
-      const newToDo = {
-        name: todo,
+    addTask = (e, task) => {
+      e.preventDefault();
+      const newTask = {
+        name: task,
         id: Date.now(),
         completed: false
       };
       this.setState({
-        allToDo: [...this.state.allToDo, newToDo]
+        tasks: [...this.state.tasks, newTask]
       });
     };
 
-    clearCompleted = event => {
-      event.preventDefault();
+    clearCompleted = e => {
+      e.preventDefault();
       this.setState({
-        allToDo: this.state.allToDo.filter(todo => !todo.completed)
+        tasks: this.state.tasks.filter(task => !task.completed)
       });
     };
 
@@ -68,12 +68,12 @@ class App extends React.Component {
       <div className="App">
         <div className="header">
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm addToDo={this.addToDo} />
+        <TaskForm addTask={this.addTask} />
         </div>
-          <ToDoList 
-          toggleToDo={this.toggleToDo}
+          <TaskList 
+          toggleTask={this.toggleTask}
           clearCompleted={this.clearCompleted}
-          allToDo={this.state.allToDo} 
+          tasks={this.state.tasks} 
           />
         </div>
     );
