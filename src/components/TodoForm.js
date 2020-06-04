@@ -18,7 +18,7 @@ handleChanges = event => {
 submitToDo = event => {
     event.preventDefault();
     this.props.addToDo(event, this.state.todo)
-}
+};
 
 render() {
     return (
@@ -26,7 +26,7 @@ render() {
             <input
             type="text"
             value={this.state.todo}
-            name="toDo"
+            name="todo"
             onChange={this.handleChanges}
             />
             <button>Add</button>

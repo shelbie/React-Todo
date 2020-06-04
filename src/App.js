@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from "react-dom";
+
 import ToDoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
 
@@ -25,11 +26,11 @@ class App extends React.Component {
       };
   }
 
-  toggleToDo = toDoId => {
-    console.log(toDoId);
+  toggleToDo = todoId => {
+    console.log(todoId);
     this.setState({
       allToDo: this.state.allToDo.map(todo => {
-        if(toDoId === todo.id) {
+        if(todoId === todo.id) {
           return {
             ...todo,
             completed: !todo.completed};
@@ -64,10 +65,17 @@ class App extends React.Component {
   // this component is going to take care of state, and any change handlers you need to work with your state
   render() {
     return (
-      <div>
+      <div className="App">
+        <div className="header">
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm />
-      </div>
+        <TodoForm addToDo={this.addToDo} />
+        </div>
+          <ToDoList 
+          toggleToDo={this.toggleToDo}
+          clearCompleted={this.clearCompleted}
+          allToDo={this.state.allToDo} 
+          />
+        </div>
     );
   }
 }
