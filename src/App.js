@@ -1,6 +1,7 @@
 import React from 'react';
+import ReactDOM from "react-dom";
 
-import TaskList from "./components/TodoList";
+import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import "./components/Todo.css"
 
@@ -38,8 +39,8 @@ class App extends React.Component {
             return task;
           }
       })
-    })
-  }
+    });
+  };
     addTask = (e, task) => {
       e.preventDefault();
       const newTask = {

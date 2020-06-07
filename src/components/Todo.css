@@ -32,14 +32,14 @@ h1 {
   text-align: left;
 }
 
-.todo-list {
+.task-list {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   width: 100%;
   margin: 0 auto;
 }
-.todo {
+.task {
   background-color: orange;
   width: 45%;
   text-align: left;
@@ -48,10 +48,11 @@ h1 {
   cursor: pointer;
 }
 
-.todo.completed {
-  background-color: orange;
+.task.completed {
+  background-color: darkgray;
   text-decoration: line-through;
 }
+
 form {
   width: 50%;
   display: flex;
